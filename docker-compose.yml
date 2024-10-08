@@ -1,0 +1,30 @@
+services:
+  xcron-app:
+    container_name: xcronapp
+    restart: always
+    build: .
+    networks:
+      - xcron_db_network
+      - xcron_web_network
+    volumes:
+      - xcronvol:/code
+  xcron-nginx:
+    container_name: xcronnginx
+    restart: always
+    image: nginx:1.15-alpine
+    ports:
+      - "345:345"
+    volumes:
+      - nginxvolume:/etc/nginx/conf.d
+    networks:
+      - xcron_web_network
+    depends_on: 
+      - xcron-app
+networks:
+  xcron_db_network:
+    driver: bridge
+  xcron_web_network:
+    driver: bridge
+volumes:
+  nginxvolume:
+  xcronvol:
