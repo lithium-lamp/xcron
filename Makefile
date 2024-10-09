@@ -29,6 +29,9 @@ spotifypost: spotifydata postxauto
 githubdata:
 	python3 /code/api/github/get.py
 
+leetcodedata:
+	python3 /code/api/leetcode/get.py
+
 marketstackdata:
 	python3 /code/api/marketstack/get.py
 

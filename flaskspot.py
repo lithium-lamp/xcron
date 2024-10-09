@@ -62,10 +62,18 @@ def exchange_code_for_token(authorization_code):
     access_token = access_data.get('access_token')
     refresh_token = access_data.get('refresh_token')
     expires_in = access_data.get('expires_in')
+
+    FULLENV = f'SPOTIFY_ACCESS_TOKEN = "{access_token}"\n'
+    FULLENV += f'SPOTIFY_REFRESH_TOKEN = "{refresh_token}"\n'
+    FULLENV += f'SPOTIFY_TOKEN_EXPIRY_TIME = "{expires_in}"'
+
+    f = open("./api/spotify/.env", "w")
+    f.write(FULLENV)
+    f.close()
     
-    print(f"\naccess_token: {access_token}\n")
-    print(f"\nrefresh_token: {refresh_token}\n")
-    print(f"\nexpires_in: {expires_in}\n")
+    #print(f"\naccess_token: {access_token}\n")
+    #print(f"\nrefresh_token: {refresh_token}\n")
+    #print(f"\nexpires_in: {expires_in}\n")
 
 if __name__ == "__main__":
     code_verifier = generate_code_verifier()

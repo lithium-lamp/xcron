@@ -1,5 +1,4 @@
-*/30 * * * * cd /code && make -C /code spotifyrefresh
+*/45 * * * * cd /code && make -C /code spotifyrefresh
 0,30 6-11 * * 1-5 cd /code && make -C /code weatherpost
 0 22 * * 1-5 cd /code && make -C /code githubpost
 0 17 * * 5 cd /code && make -C /code spotifypost
-# remember to end this file with an empty new line
