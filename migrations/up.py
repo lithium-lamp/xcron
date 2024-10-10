@@ -14,6 +14,8 @@ cursor = connection.cursor()
 
 list = os.listdir("/code/migrations/up")
 
+list.sort()
+
 for filename in list:
     f = open(f"/code/migrations/up/{filename}", "r")
     sql = f.read()

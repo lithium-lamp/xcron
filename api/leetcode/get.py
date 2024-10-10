@@ -1,3 +1,4 @@
+import psycopg2 # type: ignore
 import http.client
 import json
 import os
@@ -10,6 +11,9 @@ load_dotenv("./api/leetcode/.env")
 COOKIE = os.getenv("LEETCODE_COOKIE")
 CORS = os.getenv("LEETCODE_CORS")
 username = os.getenv("LEETCODE_USERNAME")
+DB_USERNAME = os.getenv("DB_USERNAME")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 conn = http.client.HTTPSConnection("leetcode.com")
 
@@ -104,3 +108,14 @@ fullstring += f"'{title}' was solved with {runtime} runtime and required {memory
 f = open("./tweets/data.txt", "w")
 f.write(fullstring)
 f.close()
+
+connection = psycopg2.connect(database=f"{DB_NAME}", user=f"{DB_USERNAME}", password=f"{DB_PASSWORD}", host="xcronpostgres", port=5432)
+
+cursor = connection.cursor()
+
+EXECSTRING = "INSERT INTO solvedproblems(id, difficulty, completed_time_unix, lang, title, runtime, memory)"
+EXECSTRING += f" VALUES ('{titleSlug}', '{difficulty}', {int(timestamp)}, '{lang}', '{title}', '{runtime}', '{memory}');"
+
+cursor.execute(f"{EXECSTRING}")
+
+connection.commit()
