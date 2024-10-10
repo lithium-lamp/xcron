@@ -20,6 +20,26 @@ services:
       - xcron_web_network
     depends_on: 
       - xcron-app
+  db:
+    container_name: xcronpostgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgresvolume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - xcron_db_network
 networks:
   xcron_db_network:
     driver: bridge
@@ -28,3 +48,4 @@ networks:
 volumes:
   nginxvolume:
   xcronvol:
+  postgresvolume:

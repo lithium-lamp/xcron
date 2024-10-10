@@ -46,3 +46,9 @@ spotifydata:
 
 weatherstackdata:
 	python3 /code/api/weatherstack/get.py
+
+migrateup:
+	python3 /code/migrations/up.py
+
+migratedown:
+	python3 /code/migrations/up.py
