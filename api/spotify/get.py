@@ -46,6 +46,6 @@ if len(fulltext) > 280:
     print("Too long")
     exit(1)
 
-f = open("./tweets/data.txt", "w")
+f = open("./socialplatforms/data.txt", "w")
 f.write(fulltext)
 f.close()

@@ -38,6 +38,6 @@ for i in range(0, len(data_arr)):
 
     fulltext += "\n" + symbol + " " + text
 
-f = open("./tweets/data.txt", "w")
+f = open("./socialplatforms/data.txt", "w")
 f.write(fulltext)
 f.close()

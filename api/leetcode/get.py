@@ -105,7 +105,7 @@ time = datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d')
 fullstring = f"Leetcode {difficulty} difficulty problem solved {time} using {lang}.\n"
 fullstring += f"'{title}' was solved with {runtime} runtime and required {memory}s of memory."
 
-f = open("./tweets/data.txt", "w")
+f = open("./socialplatforms/data.txt", "w")
 f.write(fullstring)
 f.close()
 

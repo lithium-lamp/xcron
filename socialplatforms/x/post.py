@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv(".env")
-load_dotenv("./tweets/.env")
+load_dotenv(".socialplatforms/x/.env")
 
 AUTHORIZATION_HEADER = os.getenv("AUTHORIZATION_HEADER")
 DB_USERNAME = os.getenv("DB_USERNAME")
@@ -18,7 +18,7 @@ headers = {
     'Authorization': AUTHORIZATION_HEADER
 }
 
-f = open("./tweets/data.txt", "r")
+f = open("./socialplatforms/data.txt", "r")
 
 # POST body data
 payload = json.dumps({

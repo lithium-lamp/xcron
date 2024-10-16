@@ -15,13 +15,22 @@ confirm:
 	@echo -n 'Are you sure? [y/N] ' && read ans && [ $${ans:-N} = y ]
 
 # ==================================================================================== #
+# MASTODON
+# ==================================================================================== #
+
+## postmast: create mastodon status post
+.PHONY: postmast
+postmast:
+	python3 /code/socialplatforms/mastodon/statuspost.py
+
+# ==================================================================================== #
 # TWITTER
 # ==================================================================================== #
 
 ## postauthxauto: authenticate before posting
 .PHONY: postauthxauto
 postauthxauto:
-	python3 /code/auth/auth1_0.py --envpath="./tweets/.env" --crudtype="POST" \
+	python3 /code/auth/auth1_0.py --envpath="./socialplatforms/x/.env" --crudtype="POST" \
 	--baseurl="https://api.twitter.com/2/tweets" --token=${xautocount_TOKEN} --accesstoken=${xautocount_ACCESS_TOKEN} \
 	--tokensecret=${xautocount_TOKEN_SECRET} --accesstokensecret=${xautocount_ACCESS_TOKEN_SECRET} \
 	--variablename="AUTHORIZATION_HEADER"
@@ -29,7 +38,7 @@ postauthxauto:
 ## deleteauthxauto: authenticate before posting
 .PHONY: deleteauthxauto
 deleteauthxauto:
-	python3 /code/auth/auth1_0.py --envpath="./tweets/.env" --crudtype="DELETE" \
+	python3 /code/auth/auth1_0.py --envpath="./socialplatforms/x/.env" --crudtype="DELETE" \
 	--baseurl="https://api.twitter.com/2/tweets" --token=${xautocount_TOKEN} --accesstoken=${xautocount_ACCESS_TOKEN} \
 	--tokensecret=${xautocount_TOKEN_SECRET} --accesstokensecret=${xautocount_ACCESS_TOKEN_SECRET} \
 	--variablename="AUTHORIZATION_HEADER"
@@ -37,12 +46,12 @@ deleteauthxauto:
 ## postxauto: create X post
 .PHONY: postxauto
 postxauto: postauthxauto
-	python3 /code/tweets/post.py
+	python3 /code/socialplatforms/x/post.py
 
 ## deletexauto: delete X post
 .PHONY: deletexauto
 deletexauto: deleteauthxauto
-	python3 /code/tweets/delete.py --tweetid=""
+	python3 /code/socialplatforms/x/delete.py --tweetid=""
 
 ## weatherpost: get weather data and post
 .PHONY: weatherpost

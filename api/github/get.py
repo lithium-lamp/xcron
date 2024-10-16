@@ -64,6 +64,6 @@ elif (cont_count <= 9):
 else:
     fulltext = "I made " + str(cont_count) + " contributions today??? Seriously?? 🤯"
 
-f = open("./tweets/data.txt", "w")
+f = open("./socialplatforms/data.txt", "w")
 f.write(fulltext)
 f.close()

@@ -8,18 +8,6 @@ services:
       - xcron_web_network
     volumes:
       - xcronvol:/code
-  xcron-nginx:
-    container_name: xcronnginx
-    restart: always
-    image: nginx:1.15-alpine
-    ports:
-      - "345:345"
-    volumes:
-      - nginxvolume:/etc/nginx/conf.d
-    networks:
-      - xcron_web_network
-    depends_on: 
-      - xcron-app
   db:
     container_name: xcronpostgres
     image: postgres
@@ -46,6 +34,5 @@ networks:
   xcron_web_network:
     driver: bridge
 volumes:
-  nginxvolume:
   xcronvol:
   postgresvolume:

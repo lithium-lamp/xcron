@@ -86,6 +86,6 @@ fulltext = f"The weather in {location} is currently {weather_descriptions} {weat
 fulltext += f"The temperature is {temperature}°C, and feels like {feelslike}°C\n"
 fulltext += f"The wind Speed is {wind_speed} km/h\n"
 
-f = open("./tweets/data.txt", "w")
+f = open("./socialplatforms/data.txt", "w")
 f.write(fulltext)
 f.close()
