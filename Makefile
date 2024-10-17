@@ -23,6 +23,11 @@ confirm:
 postmast:
 	python3 /code/socialplatforms/mastodon/statuspost.py
 
+## deletemast: delete mastodon status post
+.PHONY: deletemast
+deletemast:
+	python3 /code/socialplatforms/mastodon/statusdelete.py --statusid=""
+
 # ==================================================================================== #
 # TWITTER
 # ==================================================================================== #
@@ -53,56 +58,60 @@ postxauto: postauthxauto
 deletexauto: deleteauthxauto
 	python3 /code/socialplatforms/x/delete.py --tweetid=""
 
+# ==================================================================================== #
+# POSTING (ALL PLATFORMS)
+# ==================================================================================== #
+
 ## weatherpost: get weather data and post
 .PHONY: weatherpost
-weatherpost: weatherstackdata postxauto
+weatherpost: weatherstackdata postxauto postmast
 
 ## leetcodepost: get leetcode data and post
 .PHONY: leetcodepost
-leetcodepost: leetcodedata postxauto
+leetcodepost: leetcodedata postxauto postmast
 
 ## githubpost: get github data and post
 .PHONY: githubpost
-githubpost: githubdata postxauto
+githubpost: githubdata postxauto postmast
 
 ## marketstackpost: get stock data and post
 .PHONY: marketstackpost
-marketstackpost: marketstackdata postxauto
+marketstackpost: marketstackdata postxauto postmast
 
 ## spotifypost: get spotify data and post
 .PHONY: spotifypost
-spotifypost: spotifydata postxauto
+spotifypost: spotifydata postxauto postmast
 
 # ==================================================================================== #
 # GET DATA
 # ==================================================================================== #
 
-## githubdata: get github data and
+## githubdata: get github data
 .PHONY: githubdata
 githubdata:
 	python3 /code/api/github/get.py
 
-## leetcodedata: get github data and
+## leetcodedata: get leetcode data
 .PHONY: leetcodedata
 leetcodedata:
 	python3 /code/api/leetcode/get.py
 
-## marketstackdata: get github data and
+## marketstackdata: get stock data
 .PHONY: marketstackdata
 marketstackdata:
 	python3 /code/api/marketstack/get.py
 
-## pinterestdata: get github data and
+## pinterestdata: get pinterest data
 .PHONY: pinterestdata
 pinterestdata:
 	python3 /code/api/pinterest/get.py
 
-## spotifydata: get github data and
+## spotifydata: get spotify data
 .PHONY: spotifydata
 spotifydata:
 	python3 /code/api/spotify/get.py
 
-## weatherstackdata: get github data and
+## weatherstackdata: get weather data
 .PHONY: weatherstackdata
 weatherstackdata:
 	python3 /code/api/weatherstack/get.py
