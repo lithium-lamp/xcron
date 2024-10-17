@@ -12,15 +12,22 @@ services:
       - xcronvol:/code
   llama:
     container_name: xcronllama
-    build:
-      context: .
-      dockerfile: ./dockerfiles/llama/Dockerfile
-    networks:
-      - xcron_db_network
-    restart: on-failure
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
     volumes:
-      - llamamodels:/models
-      - llamaapi:/api
+      - xrcon_llama_vol:/root/.ollama
+    entrypoint: ["sh", "-c", "ollama serve & wait & ollama pull llama3.2 & wait & echo 'Finished!' & wait"]
+
+    #build:
+    #  context: .
+    #  dockerfile: ./dockerfiles/llama/Dockerfile
+    #networks:
+    #  - xcron_db_network
+    #restart: on-failure
+    #volumes:
+    #  - llamamodels:/models
+    #  - llamaapi:/api
   db:
     container_name: xcronpostgres
     image: postgres
@@ -48,6 +55,7 @@ networks:
     driver: bridge
 volumes:
   xcronvol:
-  llamamodels:
-  llamaapi:
+  xrcon_llama_vol:
+  #llamamodels:
+  #llamaapi:
   postgresvolume:
