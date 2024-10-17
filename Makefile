@@ -96,6 +96,11 @@ githubdata:
 leetcodedata:
 	python3 /code/api/leetcode/get.py
 
+## llamadata: get leetcode data
+.PHONY: llamadata
+llamadata:
+	python3 /code/api/llama/get.py --prompt="Tell me a fun fact in 20 words or less"
+
 ## marketstackdata: get stock data
 .PHONY: marketstackdata
 marketstackdata:

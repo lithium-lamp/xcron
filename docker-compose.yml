@@ -18,7 +18,8 @@ services:
     volumes:
       - xrcon_llama_vol:/root/.ollama
     entrypoint: ["sh", "-c", "ollama serve & wait & ollama pull llama3.2 & wait & echo 'Finished!' & wait"]
-
+    networks:
+      - xcron_db_network
     #build:
     #  context: .
     #  dockerfile: ./dockerfiles/llama/Dockerfile
