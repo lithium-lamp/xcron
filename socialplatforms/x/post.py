@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv(".env")
-load_dotenv(".socialplatforms/x/.env")
+load_dotenv("./socialplatforms/x/.env")
 
 AUTHORIZATION_HEADER = os.getenv("AUTHORIZATION_HEADER")
 DB_USERNAME = os.getenv("DB_USERNAME")

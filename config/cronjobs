@@ -1,0 +1,8 @@
+*/45 * * * * cd /code && make spotifyrefresh
+0,30 6-11 * * 1-5 cd /code && make weatherstackdata && make postallplatforms
+* 19 * * 1-5 cd /code && make newsdata && make postallplatforms
+* 20 * * 1-5 cd /code && make marketstackdata && make postallplatforms
+* 21 * * 1-5 cd /code && make leetcodedata && make postallplatforms
+* 22 * * 1-5 cd /code && make githubdata && make postallplatforms
+0 17 * * 5 cd /code && make spotifydata && make postallplatforms
+# End of file line

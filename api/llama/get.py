@@ -1,19 +1,17 @@
 import http.client
 import json
-import argparse
 
-parser = argparse.ArgumentParser()
-
-parser.add_argument('--prompt', action="store", dest='prompt', default='')
-
-args = parser.parse_args()
+f = open("./api/llama/prompt.txt", "r")
 
 conn = http.client.HTTPConnection("llama", 11434)
 payload = json.dumps({
   "model": "llama3.2",
-  "prompt": f"{args.prompt}",
+  "prompt": f.read(),
   "stream": False
 })
+
+f.close()
+
 headers = {
   'Content-Type': 'application/json'
 }

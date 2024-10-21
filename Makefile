@@ -62,25 +62,9 @@ deletexauto: deleteauthxauto
 # POSTING (ALL PLATFORMS)
 # ==================================================================================== #
 
-## weatherpost: get weather data and post
-.PHONY: weatherpost
-weatherpost: weatherstackdata postxauto postmast
-
-## leetcodepost: get leetcode data and post
-.PHONY: leetcodepost
-leetcodepost: leetcodedata postxauto postmast
-
-## githubpost: get github data and post
-.PHONY: githubpost
-githubpost: githubdata postxauto postmast
-
-## marketstackpost: get stock data and post
-.PHONY: marketstackpost
-marketstackpost: marketstackdata postxauto postmast
-
-## spotifypost: get spotify data and post
-.PHONY: spotifypost
-spotifypost: spotifydata postxauto postmast
+## postallplatforms: post on all platforms
+.PHONY: postallplatforms
+postallplatforms: postxauto postmast
 
 # ==================================================================================== #
 # GET DATA
@@ -96,15 +80,20 @@ githubdata:
 leetcodedata:
 	python3 /code/api/leetcode/get.py
 
-## llamadata: get leetcode data
+## llamadata: get llama data
 .PHONY: llamadata
 llamadata:
-	python3 /code/api/llama/get.py --prompt="Tell me a fun fact in 20 words or less"
+	python3 /code/api/llama/get.py
 
 ## marketstackdata: get stock data
 .PHONY: marketstackdata
 marketstackdata:
 	python3 /code/api/marketstack/get.py
+
+## newsdata: get stock data
+.PHONY: newsdata
+newsdata:
+	python3 /code/api/news/get.py && make llamadata
 
 ## pinterestdata: get pinterest data
 .PHONY: pinterestdata
