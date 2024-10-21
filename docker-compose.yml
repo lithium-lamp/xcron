@@ -14,7 +14,7 @@ services:
     container_name: xcronllama
     image: ollama/ollama
     ports:
-      - "11434:11434"
+      - "11034:11034"
     volumes:
       - xrcon_llama_vol:/root/.ollama
     entrypoint: ["sh", "-c", "ollama serve & wait & ollama pull llama3.2 & wait & echo 'Finished!' & wait"]
