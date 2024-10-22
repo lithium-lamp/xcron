@@ -1,2 +1,5 @@
-How do different countries balance tradition with modernization?
-The result can only at most contain 250 characters.
+{{#block hidden=True~}}
+{{human}} Answer the question 'What are the most impressive feats of ancient engineering that still stand today?' in 80 characters or less. Keep the response clear and concise
+{{assistant}} {{gen 'result' pattern='.{80}'}}
+{{/block}}
+{{~result~}}

@@ -24,6 +24,15 @@ timestamp = datetime.timestamp(now)
 file_name = r"./api/llama/prompts/data.txt"
 result = one_pass_skip(open(file_name), random.Random(timestamp))
 
+result = str(result).rstrip()
+
+output = "{{#block hidden=True~}}\n"
+output += "{{human}} "
+output += f"Answer the question '{result}' in 80 characters or less. Keep the response clear and concise\n"
+output += "{{assistant}} {{gen 'result' pattern='.{80}'}}\n"
+output += "{{/block}}\n"
+output += "{{~result~}}"
+
 f = open("./api/llama/prompt.txt", "w")
-f.write(result + "The result can only at most contain 250 characters.")
+f.write(output)
 f.close()

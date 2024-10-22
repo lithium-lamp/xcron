@@ -3,11 +3,14 @@ import json
 
 f = open("./api/llama/prompt.txt", "r")
 
-conn = http.client.HTTPConnection("llama", 11034)
+conn = http.client.HTTPConnection("llama", 11434)
 payload = json.dumps({
   "model": "llama3.2",
   "prompt": f.read(),
-  "stream": False
+  "stream": False,
+  "max_tokens": 1000,
+  "temperatute": 0.5,
+  "top_p": 0.9
 })
 
 f.close()
