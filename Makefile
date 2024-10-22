@@ -40,7 +40,7 @@ postauthxauto:
 	--tokensecret=${xautocount_TOKEN_SECRET} --accesstokensecret=${xautocount_ACCESS_TOKEN_SECRET} \
 	--variablename="AUTHORIZATION_HEADER"
 
-## deleteauthxauto: authenticate before posting
+## deleteauthxauto: authenticate before deleting
 .PHONY: deleteauthxauto
 deleteauthxauto:
 	python3 /code/auth/auth1_0.py --envpath="./socialplatforms/x/.env" --crudtype="DELETE" \
@@ -73,7 +73,7 @@ postallplatforms: postxauto postmast
 ## createprompt: create prompt for llama
 .PHONY: createprompt
 createprompt:
-	python3 /code/api/llama/prompts/one.py
+	python3 /code/api/llama/generateprompt.py
 
 # ==================================================================================== #
 # GET DATA

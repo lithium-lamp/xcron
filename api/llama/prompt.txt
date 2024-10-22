@@ -1,1 +1,2 @@
-Tell me a fun fact.  Respond with 250 characters or less.
+How do different countries balance tradition with modernization?
+The result can only at most contain 250 characters.
