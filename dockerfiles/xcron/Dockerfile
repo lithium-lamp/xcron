@@ -5,7 +5,10 @@ COPY config/cronjobs /etc/crontabs/root
 COPY requirements.txt /etc/requirements/requirements.txt
 
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 py3-pip make bash util-linux vim && ln -sf python3 /usr/bin/python
+RUN apk add --update --no-cache python3 py3-pip make bash \
+	util-linux vim tzdata && ln -sf python3 /usr/bin/python
+
+ENV TZ Europe/Berlin
 
 COPY .env /code/.env
 COPY api /code/api

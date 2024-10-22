@@ -67,6 +67,15 @@ deletexauto: deleteauthxauto
 postallplatforms: postxauto postmast
 
 # ==================================================================================== #
+# GENERATE PROMPT
+# ==================================================================================== #
+
+## createprompt: create prompt for llama
+.PHONY: createprompt
+createprompt:
+	python3 /code/api/llama/prompts/one.py
+
+# ==================================================================================== #
 # GET DATA
 # ==================================================================================== #
 
